@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Test {
 
 
@@ -46,7 +44,7 @@ public class Test {
 
     public static void tester(int[][] adjMatrix, int s)
     {
-        bfa.wrapper(new Graph(adjMatrix),s);
+        bfa.bellmanFord(new Graph(adjMatrix),s);
         System.out.println();
         d.dijkstra(adjMatrix,s);
         System.out.println("____________________");

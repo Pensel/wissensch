@@ -36,7 +36,6 @@ public class Graph {
                 }
             }
         }
-
     }
 
     public int getKnotenAnzahl() {

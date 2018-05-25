@@ -13,7 +13,7 @@ public class BFA extends ShortestPath
     }
 
 
-    public void bellmanFord(Graph g, int s) throws Exception
+    public void bellmanFord(Graph g, int s)
     {
         knotenAnzahl = g.getKnotenAnzahl();
         entfernungen = makeDistanceArray(knotenAnzahl,s); //vererbte Methode
@@ -43,8 +43,10 @@ public class BFA extends ShortestPath
             int v = kante.getZielKnoten();
             int gewicht = kante.getGewicht();
 
-            if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v])
-                throw new Exception("Negativer Zyklus!");
+            if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v]) {
+                System.out.println("Negativer Zyklus");
+                break;
+            }
         }
 
 
