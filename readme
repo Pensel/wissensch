@@ -1,5 +1,5 @@
-git pull
+function gitauto() { git fetch; git add .; git commit -m "$@"; git push;}
+git fetch
 git add .
 git commit -m "deine message"
 git push
-function gitauto() { git add .; git commit -m "$@"; git push;}
