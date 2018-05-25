@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Test {
 
 
@@ -67,37 +69,46 @@ public class Test {
         divider(2);
     }
 
-    public static void testerDataDriven(int[][] adjMatrix, int s)
+    public static void testerDataDriven(int[][] adjMatrix)
     {
+        Random random = new Random();
+
+        int l = adjMatrix.length;
         Graph g;
+        int rn;
         while (true)
         {
+            rn = random.nextInt(l);
             long startTime = System.nanoTime();
             g = new Graph(adjMatrix);
-            bfa.bellmanFord(g, s, false);
+            bfa.bellmanFord(g, rn, false);
             long endTime = System.nanoTime();
             System.out.println("B" + (endTime - startTime));
 
             startTime = System.nanoTime();
-            d.dijkstra(adjMatrix, s, false);
+            d.dijkstra(adjMatrix, rn, false);
             endTime = System.nanoTime();
             System.out.println("D" + (endTime - startTime));
         }
     }
 
-    public static void testerDataDrivenPremadeGraph(int[][] adjMatrix, int s)
+    public static void testerDataDrivenPremadeGraph(int[][] adjMatrix)
     {
+        Random random = new Random();
+        int l = adjMatrix.length;
+        int rn;
         Graph g = new Graph(adjMatrix);
         while (true)
         {
+            rn = random.nextInt(l);
             long startTime = System.nanoTime();
 
-            bfa.bellmanFord(g, s, false);
+            bfa.bellmanFord(g, rn, false);
             long endTime = System.nanoTime();
             System.out.println("B" + (endTime - startTime));
 
             startTime = System.nanoTime();
-            d.dijkstra(adjMatrix, s, false);
+            d.dijkstra(adjMatrix, rn, false);
             endTime = System.nanoTime();
             System.out.println("D" + (endTime - startTime));
         }
@@ -110,9 +121,9 @@ public class Test {
         {
             flag = args[0];
             if (flag.equals("POST"))
-                testerDataDriven(testBigger,0);
+                testerDataDriven(testBigger);
             else if(flag.equals("PRE"))
-                testerDataDrivenPremadeGraph(testBigger,0);
+                testerDataDrivenPremadeGraph(testBigger);
         }
         catch (Exception e)
         {
