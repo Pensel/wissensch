@@ -63,7 +63,7 @@ public class Dijkstra extends ShortestPath {
 
 	public void printOutput() {
 		System.out.println("Dijkstra: ");
-	    for (int i = 0; i < distance.length; i++) {
+		for (int i = 0; i < distance.length; i++) {
 
 			System.out.println("Knoten: " + i + " | Distance: " + distance[i] + " | Pred: " + pred[i]);
 		}
