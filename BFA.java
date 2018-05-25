@@ -32,7 +32,6 @@ public class BFA extends ShortestPath
             }
         }
 
-        //negative cycle?
 
         for (Kante kante: kanten)
         {
@@ -42,8 +41,6 @@ public class BFA extends ShortestPath
 
             if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v])
                 throw new Exception("Negativer Zyklus!");
-                //System.out.println("Negativer Zyklus!");
-
         }
 
 
