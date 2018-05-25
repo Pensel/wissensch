@@ -48,7 +48,7 @@ public class BFA extends ShortestPath
 
 
 
-        printOutput();
+        printOutput(entfernungen);
     }
 
 
@@ -63,12 +63,5 @@ public class BFA extends ShortestPath
         }
     }
 
-    public void printOutput() {
-        System.out.println("BFA: ");
-        for (int i = 0; i < entfernungen.length; i++) {
-
-            System.out.println("Knoten: " + i + " | Distance: " + entfernungen[i]);
-        }
-    }
 
 }
