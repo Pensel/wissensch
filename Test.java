@@ -1,4 +1,7 @@
+import java.util.Arrays;
+
 public class Test {
+
 
     private static int[][] testNegativerCycle = {{0, 1, 2, 0, 0},
             {1, 0, -7, 5, 0},
@@ -39,10 +42,9 @@ public class Test {
         System.out.println("____________________");
     }
 
+
     public static void main(String... arg)
     {
-
-
 
 
         BFA bfa = new BFA();
