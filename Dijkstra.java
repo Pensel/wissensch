@@ -5,7 +5,7 @@ public class Dijkstra extends ShortestPath {
 	private int[][] graph;
 	private int[] distance;
 	private int[] pred;
-	ArrayList<Integer> M;
+	private ArrayList<Integer> M;
 
 	public Dijkstra() {
 	}
