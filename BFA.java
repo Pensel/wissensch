@@ -21,7 +21,7 @@ public class BFA extends ShortestPath
         vorgaenger = new int[knotenAnzahl];
 
 
-        for (int i = 0; i< knotenAnzahl -1; i++)
+        for (int i = 0; i< knotenAnzahl -1; i++) // n-1 durchläufe
         {
             for (Kante kante: kanten)
             {
@@ -29,7 +29,8 @@ public class BFA extends ShortestPath
                 int zielKnoten = kante.getZielKnoten();
                 int gewicht = kante.getGewicht();
 
-                if (entfernungen[ursprungsKnoten] != Integer.MAX_VALUE && entfernungen[ursprungsKnoten]+ gewicht <entfernungen[zielKnoten]){
+                if (entfernungen[ursprungsKnoten] != Integer.MAX_VALUE && entfernungen[ursprungsKnoten]+ gewicht <entfernungen[zielKnoten]) // Relaxen der Kanten
+                {
                     entfernungen[zielKnoten] = entfernungen[ursprungsKnoten] +gewicht;
                     vorgaenger[zielKnoten] = ursprungsKnoten;
                 }
@@ -37,7 +38,7 @@ public class BFA extends ShortestPath
         }
 
 
-        for (Kante kante: kanten)
+        for (Kante kante: kanten) //der N-te Durchlauf. Nach n-1 Durchläufen ist der schnellste Weg gefunden. Der n-te zeigt ob es negative Zyklen gibt.
         {
             int u = kante.getUrsprungsKnoten();
             int v = kante.getZielKnoten();
