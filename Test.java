@@ -3,6 +3,10 @@ import java.util.Arrays;
 public class Test {
 
 
+    private static BFA bfa = new BFA();
+    private static Dijkstra d = new Dijkstra();
+
+
     private static int[][] testNegativerCycle = {{0, 1, 2, 0, 0},
             {1, 0, -7, 5, 0},
             {2, -7, 0, 0, 7},
@@ -37,39 +41,25 @@ public class Test {
     };
 
 
-    private static void divider()
+
+
+
+    public static void tester(int[][] adjMatrix, int s)
     {
+        bfa.wrapper(new Graph(adjMatrix),s);
+        System.out.println();
+        d.dijkstra(adjMatrix,s);
         System.out.println("____________________");
     }
-
 
     public static void main(String... arg)
     {
 
-
-        BFA bfa = new BFA();
-        Dijkstra d = new Dijkstra();
-
-
-        bfa.wrapper(new Graph(testNegativerCycle),0);
-        d.dijkstra(testNegativerCycle,0);
-        divider();
-
-
-        bfa.wrapper(new Graph(testNegativeKante),0);
-        d.dijkstra(testNegativeKante,0);
-        divider();
-
-        bfa.wrapper(new Graph(testStandard),0);
-        d.dijkstra(testStandard,0);
-        divider();
-
-        bfa.wrapper(new Graph(testDirected),0);
-        d.dijkstra(testDirected,0);
-
-
-        bfa.wrapper(new Graph(testBigger),0);
-        d.dijkstra(testBigger,0);
+        tester(testNegativerCycle, 0);
+        tester(testNegativeKante, 0);
+        tester(testStandard, 0);
+        tester(testDirected, 0);
+        tester(testBigger, 0);
 
     }
 }

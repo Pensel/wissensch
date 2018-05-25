@@ -59,7 +59,7 @@ public class BFA extends ShortestPath
         }
         catch (Exception e)
         {
-            System.out.println("Negativer Zyklus");
+            System.out.println("BFA: \nNegativer Zyklus");
         }
     }
 
