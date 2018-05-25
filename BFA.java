@@ -2,7 +2,7 @@ public class BFA extends ShortestPath
 {
 
 
-    private int[] entfernungen;
+    private int[] entfernungen, vorgaenger;
     private int knotenAnzahl;
     private Kante[] kanten;
 
@@ -17,6 +17,7 @@ public class BFA extends ShortestPath
         knotenAnzahl = g.getKnotenAnzahl();
         entfernungen = this.makeDistanceArray(knotenAnzahl,s);
         kanten = g.getKanten();
+        vorgaenger = new int[knotenAnzahl];
 
 
         for (int i = 0; i< knotenAnzahl -1; i++)
@@ -27,8 +28,10 @@ public class BFA extends ShortestPath
                 int v = kante.getZiel();
                 int gewicht = kante.getGewicht();
 
-                if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v])
+                if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v]){
                     entfernungen[v] = entfernungen[u] +gewicht;
+                    vorgaenger[v] = u;
+                }
             }
         }
 
@@ -45,7 +48,7 @@ public class BFA extends ShortestPath
 
 
 
-        printOutput(entfernungen);
+        printOutput("BFA",entfernungen, vorgaenger);
     }
 
 

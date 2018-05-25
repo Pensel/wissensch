@@ -36,7 +36,7 @@ public class Dijkstra extends ShortestPath {
 		}
 		pred[s] = s;
 		//printOutput();
-		printOutput(distance,pred);
+		printOutput("Dijkstra",distance,pred);
 	}
 
 	public void relax(int e1, int e2) {
