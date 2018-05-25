@@ -14,8 +14,8 @@ public class BFA extends ShortestPath
 
     public void bellmanFord(Graph g, int s) throws Exception
     {
-        entfernungen = this.makeDistanceArray(g.getKnotenAnzahl(),s);
         knotenAnzahl = g.getKnotenAnzahl();
+        entfernungen = this.makeDistanceArray(knotenAnzahl,s);
         kanten = g.getKanten();
 
 
