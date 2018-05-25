@@ -10,7 +10,7 @@ public class Dijkstra extends ShortestPath {
 	public Dijkstra() {
 	}
 
-	public void dijkstra(int[][] graph, int s) {
+	public void dijkstra(int[][] graph, int s, boolean output) {
 		M = new ArrayList<Integer>();
 		this.graph = graph;
 		int e1;
@@ -36,7 +36,8 @@ public class Dijkstra extends ShortestPath {
 		}
 		pred[s] = s;
 		//printOutput();
-		printOutput("Dijkstra",distance,pred);
+		if (output)
+			printOutput("Dijkstra",distance,pred);
 	}
 
 	public void relax(int e1, int e2) {
