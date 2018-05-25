@@ -6,9 +6,9 @@ public class Test {
             {0, 5, 0, 0, 1},
             {0, 0, 7, 1, 0}};
     private static int[][] testNegativeKante = {{0, -1, 5, 0, 0},
-            {-1, 0, 3, 3, 0},
+            {1, 0, 3, 3, 0},
             {5, 3, 0, 0, 2},
-            {0, 3, 0, 0, 6},
+            {0, 3, 0, -1, 6},
             {0, 0, 2, 6, 0}};
     private static int[][] testStandard = {{0, 5, 1, 0, 0},
             {5, 0, 3, 2, 0},

@@ -1,10 +1,10 @@
 public class BFA extends ShortestPath
 {
 
-    private Graph g;
-    private int[] entfernungen;
-    private int s, knoten, kanten;
 
+    private int[] entfernungen;
+    private int knotenAnzahl;
+    private Kante[] kanten;
 
     public BFA()
     {
@@ -14,18 +14,18 @@ public class BFA extends ShortestPath
 
     public void bellmanFord(Graph g, int s) throws Exception
     {
-        this.g = g;
         entfernungen = this.makeDistanceArray(g.getKnotenAnzahl(),s);
-        knoten = g.getKnotenAnzahl();
-        kanten = g.getKantenAnzahl();
+        knotenAnzahl = g.getKnotenAnzahl();
+        kanten = g.getKanten();
 
-        for (int i=0; i<knoten-1; i++)
+
+        for (int i = 0; i< knotenAnzahl -1; i++)
         {
-            for (int j=0; j<kanten; j++)
+            for (Kante kante: kanten)
             {
-                int u = g.getKanteN(j).getQuelle();
-                int v = g.getKanteN(j).getZiel();
-                int gewicht = g.getKanten()[j].getGewicht();
+                int u = kante.getQuelle();
+                int v = kante.getZiel();
+                int gewicht = kante.getGewicht();
 
                 if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v])
                     entfernungen[v] = entfernungen[u] +gewicht;
@@ -34,11 +34,11 @@ public class BFA extends ShortestPath
 
         //negative cycle?
 
-        for (int k=0; k<kanten; k++)
+        for (Kante kante: kanten)
         {
-            int u = g.getKanteN(k).getQuelle();
-            int v = g.getKanteN(k).getZiel();
-            int gewicht = g.getKanteN(k).getGewicht();
+            int u = kante.getQuelle();
+            int v = kante.getZiel();
+            int gewicht = kante.getGewicht();
 
             if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v])
                 throw new Exception("Negativer Zyklus!");
