@@ -13,7 +13,9 @@ public class ShortestPath {
     public void printOutput(int[] entfernungen, int[]... vorherige) {
         System.out.println(vorherige.length > 0 ? "Dijkstra: " : "BFA");
         for (int i = 0; i < entfernungen.length; i++) {
-            System.out.println(vorherige.length > 0 ? "Knoten: " + i + " | Distance: " + entfernungen[i] + " | Pred: " + vorherige[0][i] : "Knoten: " + i + " | Distance: " + entfernungen[i]);
+            System.out.println(vorherige.length > 0 ?
+                    "Knoten: " + i + " | Distance: " + entfernungen[i] + " | Pred: " + vorherige[0][i] :
+                    "Knoten: " + i + " | Distance: " + entfernungen[i]);
         }
     }
 
