@@ -55,7 +55,7 @@ public class BFA extends ShortestPath
         printOutput(identifier,entfernungen, vorgaenger);
     }
 
-
+/* Mybe remove it all together. exception or not?
     public void wrapper(Graph g, int s) //zum Abfangen der Exception, da bei negativen Zyklen die Ergebnisse nicht verwertbar sind
     {
         try{
@@ -66,6 +66,6 @@ public class BFA extends ShortestPath
             System.out.println(identifier+": \nNegativer Zyklus");
         }
     }
-
+*/
 
 }
