@@ -1,12 +1,12 @@
 public class ShortestPath {
 
-    public int[] makeDistanceArray(int len, int s){
-        int[] distance = new int[len];
-        for(int i = 0; i < distance.length; i++){
-            distance[i] = Integer.MAX_VALUE;
+    public int[] makeDistanceArray(int laenge, int start){
+        int[] entfernung = new int[laenge];
+        for(int i = 0; i < entfernung.length; i++){
+            entfernung[i] = Integer.MAX_VALUE;
         }
-        distance[s]=0;
-        return distance;
+        entfernung[start]=0;
+        return entfernung;
     }
 
 
