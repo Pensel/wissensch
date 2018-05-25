@@ -40,16 +40,9 @@ public class Graph {
         return knotenAnzahl;
     }
 
-    public int getKantenAnzahl() {
-        return kantenAnzahl;
-    }
 
     public Kante[] getKanten() {
         return kanten;
     }
 
-    public Kante getKanteN(int n)
-    {
-        return kanten[n];
-    }
 }
