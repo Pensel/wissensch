@@ -1,4 +1,4 @@
-function gitauto() { git fetch; git add .; git commit -m {$@}; git push;}
+function gitauto() { git fetch; git add .; git commit -m "$@"; git push;}
 git fetch
 git add .
 git commit -m "deine message"
