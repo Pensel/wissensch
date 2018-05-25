@@ -4,32 +4,35 @@ public class Graph {
     private Kante[] kanten;
 
 
-    public Graph(int[][] adjMatrix)
+    public Graph(int[][] adjazenzmatrix)
     {
 
-        knotenAnzahl = adjMatrix.length;
-        kantenAnzahl = 0;
+        knotenAnzahl = adjazenzmatrix.length; //siehe Erklärung in der Arbeit
+        kantenAnzahl = 0; //Zähler
 
-        for (int i=0; i<adjMatrix.length; i++)
+        for (int ursprungsKnoten=0; ursprungsKnoten<adjazenzmatrix.length; ursprungsKnoten++)
         {
-            for (int j=0; j<adjMatrix.length; j++)
+            for (int zielKnoten=0; zielKnoten<adjazenzmatrix.length; zielKnoten++)
             {
-                if(adjMatrix[i][j] != 0)
+                if(adjazenzmatrix[ursprungsKnoten][zielKnoten] != 0)
                     kantenAnzahl++;
             }
         }
 
         kanten = new Kante[kantenAnzahl];
-        int counter = 0;
 
-        for (int i=0; i<adjMatrix.length; i++)
+        int zaehler = 0; // nötig um alle Kanten zu setzen
+
+        for (int ursprungsKnoten=0; ursprungsKnoten<adjazenzmatrix.length; ursprungsKnoten++)
         {
-            for (int j=0; j<adjMatrix.length; j++)
+            for (int zielKnoten=0; zielKnoten<adjazenzmatrix.length; zielKnoten++)
             {
-                if(adjMatrix[i][j] != 0)
+                if(adjazenzmatrix[ursprungsKnoten][zielKnoten] != 0) // wenn es eine Verbindung zwischen zwei Knoten gibt
                 {
-                    kanten[counter] = new Kante(i,j,adjMatrix[i][j]);
-                    counter++;
+                    kanten[zaehler] = new Kante(ursprungsKnoten,
+                            zielKnoten,
+                            adjazenzmatrix[ursprungsKnoten][zielKnoten]); //Da ausgeschlossen ist das die Verbindung 0 ist, muss das das Gewicht zwischen den beiden sein.
+                    zaehler++;
                 }
             }
         }

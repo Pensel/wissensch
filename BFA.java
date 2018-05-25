@@ -5,6 +5,7 @@ public class BFA extends ShortestPath
     private int[] entfernungen, vorgaenger;
     private int knotenAnzahl;
     private Kante[] kanten;
+    private final String identifier = "BFA";
 
     public BFA()
     {
@@ -15,7 +16,7 @@ public class BFA extends ShortestPath
     public void bellmanFord(Graph g, int s) throws Exception
     {
         knotenAnzahl = g.getKnotenAnzahl();
-        entfernungen = this.makeDistanceArray(knotenAnzahl,s);
+        entfernungen = makeDistanceArray(knotenAnzahl,s); //vererbte Methode
         kanten = g.getKanten();
         vorgaenger = new int[knotenAnzahl];
 
@@ -24,13 +25,13 @@ public class BFA extends ShortestPath
         {
             for (Kante kante: kanten)
             {
-                int u = kante.getQuelle();
-                int v = kante.getZiel();
+                int ursprungsKnoten = kante.getUrsprungsKnoten();
+                int zielKnoten = kante.getZielKnoten();
                 int gewicht = kante.getGewicht();
 
-                if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v]){
-                    entfernungen[v] = entfernungen[u] +gewicht;
-                    vorgaenger[v] = u;
+                if (entfernungen[ursprungsKnoten] != Integer.MAX_VALUE && entfernungen[ursprungsKnoten]+ gewicht <entfernungen[zielKnoten]){
+                    entfernungen[zielKnoten] = entfernungen[ursprungsKnoten] +gewicht;
+                    vorgaenger[zielKnoten] = ursprungsKnoten;
                 }
             }
         }
@@ -38,8 +39,8 @@ public class BFA extends ShortestPath
 
         for (Kante kante: kanten)
         {
-            int u = kante.getQuelle();
-            int v = kante.getZiel();
+            int u = kante.getUrsprungsKnoten();
+            int v = kante.getZielKnoten();
             int gewicht = kante.getGewicht();
 
             if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u]+ gewicht <entfernungen[v])
@@ -48,18 +49,18 @@ public class BFA extends ShortestPath
 
 
 
-        printOutput("BFA",entfernungen, vorgaenger);
+        printOutput(identifier,entfernungen, vorgaenger);
     }
 
 
-    public void wrapper(Graph g, int s)
+    public void wrapper(Graph g, int s) //zum Abfangen der Exception, da bei negativen Zyklen die Ergebnisse nicht verwertbar sind
     {
         try{
             bellmanFord(g,s);
         }
         catch (Exception e)
         {
-            System.out.println("BFA: \nNegativer Zyklus");
+            System.out.println(identifier+": \nNegativer Zyklus");
         }
     }
 

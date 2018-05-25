@@ -1,18 +1,18 @@
 public class Kante {
 
-    private int quelle, ziel, gewicht;
-    public Kante(int quelle, int ziel, int gewicht) {
-        this.quelle = quelle;
+    private int ursprungsKnoten, zielKnoten, gewicht;
+    public Kante(int ursprungsKnoten, int zielKnoten, int gewicht) {
+        this.ursprungsKnoten = ursprungsKnoten;
         this.gewicht = gewicht;
-        this.ziel = ziel;
+        this.zielKnoten = zielKnoten;
     }
 
-    public int getQuelle() {
-        return quelle;
+    public int getUrsprungsKnoten() {
+        return ursprungsKnoten;
     }
 
-    public int getZiel() {
-        return ziel;
+    public int getZielKnoten() {
+        return zielKnoten;
     }
 
     public int getGewicht() {

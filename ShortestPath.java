@@ -10,10 +10,10 @@ public class ShortestPath {
     }
 
 
-    public void printOutput(String identifier, int[] entfernungen, int[]... vorherige) {
+    public void printOutput(String identifier, int[] entfernungen, int[] vorherige) {
         System.out.println(identifier + ":");
         for (int i = 0; i < entfernungen.length; i++) {
-            System.out.println("Knoten: " + i + " | Entfernung: " + entfernungen[i] + " | Vorgänger: " + vorherige[0][i]);
+            System.out.println("Knoten: " + i + " | Entfernung: " + entfernungen[i] + " | Vorgänger: " + vorherige[i]);
         }
     }
 
