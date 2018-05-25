@@ -4,17 +4,17 @@ public class Graph {
     private Kante[] kanten;
 
 
-    public Graph(int[][] adjazenzmatrix)
+    public Graph(int[][] adjazenzMatrix)
     {
 
-        knotenAnzahl = adjazenzmatrix.length; //siehe Erklärung in der Arbeit
+        knotenAnzahl = adjazenzMatrix.length; //siehe Erklärung in der Arbeit
         kantenAnzahl = 0; //Zähler
 
-        for (int ursprungsKnoten=0; ursprungsKnoten<adjazenzmatrix.length; ursprungsKnoten++)
+        for (int ursprungsKnoten=0; ursprungsKnoten<adjazenzMatrix.length; ursprungsKnoten++)
         {
-            for (int zielKnoten=0; zielKnoten<adjazenzmatrix.length; zielKnoten++)
+            for (int zielKnoten=0; zielKnoten<adjazenzMatrix.length; zielKnoten++)
             {
-                if(adjazenzmatrix[ursprungsKnoten][zielKnoten] != 0)
+                if(adjazenzMatrix[ursprungsKnoten][zielKnoten] != 0)
                     kantenAnzahl++;
             }
         }
@@ -23,15 +23,15 @@ public class Graph {
 
         int zaehler = 0; // nötig um alle Kanten zu setzen
 
-        for (int ursprungsKnoten=0; ursprungsKnoten<adjazenzmatrix.length; ursprungsKnoten++)
+        for (int ursprungsKnoten=0; ursprungsKnoten<adjazenzMatrix.length; ursprungsKnoten++)
         {
-            for (int zielKnoten=0; zielKnoten<adjazenzmatrix.length; zielKnoten++)
+            for (int zielKnoten=0; zielKnoten<adjazenzMatrix.length; zielKnoten++)
             {
-                if(adjazenzmatrix[ursprungsKnoten][zielKnoten] != 0) // wenn es eine Verbindung zwischen zwei Knoten gibt
+                if(adjazenzMatrix[ursprungsKnoten][zielKnoten] != 0) // wenn es eine Verbindung zwischen zwei Knoten gibt
                 {
                     kanten[zaehler] = new Kante(ursprungsKnoten,
                             zielKnoten,
-                            adjazenzmatrix[ursprungsKnoten][zielKnoten]); //Da ausgeschlossen ist das die Verbindung 0 ist, muss das das Gewicht zwischen den beiden sein.
+                            adjazenzMatrix[ursprungsKnoten][zielKnoten]); //Da ausgeschlossen ist das die Verbindung 0 ist, muss das das Gewicht zwischen den beiden sein.
                     zaehler++;
                 }
             }
