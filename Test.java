@@ -43,30 +43,14 @@ public class Test {
 
 
 
-    public static void divider(int n)
-    {
-        for (int i=0; i<n; i++)
-            System.out.println("____________________");
-    }
-
-
 
     public static void tester(int[][] adjMatrix, int s)
     {
 
         Graph g = new Graph(adjMatrix);
-        long startTime = System.nanoTime();
         bfa.bellmanFord(g,s);
-        long endTime = System.nanoTime();
-        divider(1);
-        System.out.println("BFA Zeit in Nanosekunden:"+ (endTime - startTime));
-        divider(1);
-        startTime = System.nanoTime();
         d.dijkstra(adjMatrix,s);
-        endTime = System.nanoTime();
-        divider(1);
-        System.out.println("Dijkstra Zeit in Nanosekunden:"+ (endTime - startTime));
-        divider(2);
+        System.out.println("____________________");
     }
 
 
