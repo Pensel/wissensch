@@ -53,8 +53,8 @@ public class Test {
 
     public static void tester(int[][] adjMatrix, int s)
     {
-        Graph g = new Graph(adjMatrix);
 
+        Graph g = new Graph(adjMatrix);
         long startTime = System.nanoTime();
         bfa.bellmanFord(g,s);
         long endTime = System.nanoTime();

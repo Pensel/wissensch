@@ -55,17 +55,5 @@ public class BFA extends ShortestPath
         printOutput(identifier,entfernungen, vorgaenger);
     }
 
-/* Mybe remove it all together. exception or not?
-    public void wrapper(Graph g, int s) //zum Abfangen der Exception, da bei negativen Zyklen die Ergebnisse nicht verwertbar sind
-    {
-        try{
-            bellmanFord(g,s);
-        }
-        catch (Exception e)
-        {
-            System.out.println(identifier+": \nNegativer Zyklus");
-        }
-    }
-*/
 
 }

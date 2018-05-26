@@ -35,7 +35,6 @@ public class Dijkstra extends ShortestPath {
 			}
 		}
 		pred[s] = s;
-		//printOutput();
 
 		printOutput("Dijkstra",distance,pred);
 	}
@@ -62,12 +61,6 @@ public class Dijkstra extends ShortestPath {
 		return index;
 	}
 
-	/*public void printOutput() {
-		System.out.println("Dijkstra: ");
-		for (int i = 0; i < distance.length; i++) {
 
-			System.out.println("Knoten: " + i + " | Distance: " + distance[i] + " | Pred: " + pred[i]);
-		}
-	}*/
 
 }
