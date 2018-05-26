@@ -51,92 +51,33 @@ public class Test {
 
 
 
-    public static void testerHumanReadable(int[][] adjMatrix, int s)
+    public static void tester(int[][] adjMatrix, int s)
     {
         Graph g = new Graph(adjMatrix);
 
         long startTime = System.nanoTime();
-        bfa.bellmanFord(g,s,true);
+        bfa.bellmanFord(g,s);
         long endTime = System.nanoTime();
         divider(1);
         System.out.println("BFA Zeit in Nanosekunden:"+ (endTime - startTime));
         divider(1);
         startTime = System.nanoTime();
-        d.dijkstra(adjMatrix,s,true);
+        d.dijkstra(adjMatrix,s);
         endTime = System.nanoTime();
         divider(1);
         System.out.println("Dijkstra Zeit in Nanosekunden:"+ (endTime - startTime));
         divider(2);
     }
 
-    public static void testerDataDriven(int[][] adjMatrix)
-    {
-        Random random = new Random();
-
-        int l = adjMatrix.length;
-        Graph g;
-        int rn;
-        while (true)
-        {
-            rn = random.nextInt(l);
-            long startTime = System.nanoTime();
-            g = new Graph(adjMatrix);
-            bfa.bellmanFord(g, rn, false);
-            long endTime = System.nanoTime();
-            System.out.println("B" + (endTime - startTime));
-
-            startTime = System.nanoTime();
-            d.dijkstra(adjMatrix, rn, false);
-            endTime = System.nanoTime();
-            System.out.println("D" + (endTime - startTime));
-        }
-    }
-
-    public static void testerDataDrivenPremadeGraph(int[][] adjMatrix)
-    {
-        Random random = new Random();
-        int l = adjMatrix.length;
-        int rn;
-        Graph g = new Graph(adjMatrix);
-        while (true)
-        {
-            rn = random.nextInt(l);
-            long startTime = System.nanoTime();
-
-            bfa.bellmanFord(g, rn, false);
-            long endTime = System.nanoTime();
-            System.out.println("B" + (endTime - startTime));
-
-            startTime = System.nanoTime();
-            d.dijkstra(adjMatrix, rn, false);
-            endTime = System.nanoTime();
-            System.out.println("D" + (endTime - startTime));
-        }
-    }
 
     public static void main(String... args)
     {
-        String flag;
-        try
-        {
-            flag = args[0];
-            if (flag.equals("POST"))
-                testerDataDriven(testBigger);
-            else if(flag.equals("PRE"))
-                testerDataDrivenPremadeGraph(testBigger);
-        }
-        catch (Exception e)
-        {
 
-        }
-        finally {
-            testerHumanReadable(testNegativerCycle, 0);
-            testerHumanReadable(testNegativeKante, 0);
-            testerHumanReadable(testStandard, 0);
-            testerHumanReadable(testDirected, 0);
-            testerHumanReadable(testBigger, 0);
-        }
-
+            tester(testNegativerCycle, 0);
+            tester(testNegativeKante, 0);
+            tester(testStandard, 0);
+            tester(testDirected, 0);
+            tester(testBigger, 0);
 
 
 

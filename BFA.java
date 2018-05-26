@@ -13,7 +13,7 @@ public class BFA extends ShortestPath
     }
 
 
-    public void bellmanFord(Graph g, int s, boolean output)
+    public void bellmanFord(Graph g, int s)
     {
         knotenAnzahl = g.getKnotenAnzahl();
         entfernungen = makeDistanceArray(knotenAnzahl,s); //vererbte Methode
@@ -51,8 +51,8 @@ public class BFA extends ShortestPath
         }
 
 
-        if (output)
-            printOutput(identifier,entfernungen, vorgaenger);
+
+        printOutput(identifier,entfernungen, vorgaenger);
     }
 
 /* Mybe remove it all together. exception or not?

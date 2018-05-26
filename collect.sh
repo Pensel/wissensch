@@ -1,6 +1,6 @@
 SAVELOCATION="/media/data/collection/"
 CLASSPATH="/media/data/gits/StudiumNow/WA/Code/out/production/Code"
-DURATION="30m"
+DURATION="2m"
 timeout $DURATION java -cp $CLASSPATH Test PRE >> $SAVELOCATION/collectPRE
 timeout $DURATION java -cp $CLASSPATH Test POST >> $SAVELOCATION/collectPOST
 grep "D" $SAVELOCATION/collectPRE > $SAVELOCATION/d.pre
