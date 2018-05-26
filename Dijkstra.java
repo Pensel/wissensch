@@ -1,59 +1,57 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Dijkstra extends ShortestPath {
 	private int[][] graph;
-	private int[] distance;
-	private int[] pred;
+	private int[] entfernungen, vorgaenger;
 	private ArrayList<Integer> M;
+	private int aktuellerKnoten;// momentan besuchter Knoten
+	private int knotenAnzahl;// N
 
 	public Dijkstra() {
 	}
 
 	public void dijkstra(int[][] graph, int s) {
-		M = new ArrayList<Integer>();
 		this.graph = graph;
-		int e1;
-		distance = makeDistanceArray(graph.length,s); // Initialize Distances with Infinity and s with 0
-		pred = new int[graph.length];
+		knotenAnzahl = graph.length;
+		M = new ArrayList<Integer>();// Menge der bekannten unbesuchten Ecken
+		entfernungen = makeDistanceArray(knotenAnzahl, s);// vererbte Methode
+		vorgaenger = makePredecessor(s);// initialisiert Vorgänger
 		M.add(s);
-		pred[0] = -1;
+		while (!M.isEmpty()) {// läuft N mal durch, da jede Ecke in M aufgenommen wird
+			aktuellerKnoten = getSmallestEdge(s); // ermittelt in M enthaltenen Knoten mit der geringsten Distanz zu s
 
-		while (!M.isEmpty()) {
-			e1 = getSmallestEdge(s);
+			M.remove((Object) aktuellerKnoten);
+			for (int nachbarKnoten = 0; nachbarKnoten < knotenAnzahl; nachbarKnoten++) {// läuft N mal durch
 
-			M.remove((Object) e1);
-			for (int e2 = 0; e2 < graph[e1].length; e2++) {
-
-				if (!(e2 == e1) && graph[e1][e2] != 0) {
-					if (!(M.contains(e2)) && distance[e2] == Integer.MAX_VALUE) {
-						M.add(e2);
+				if (!(nachbarKnoten == aktuellerKnoten) && graph[aktuellerKnoten][nachbarKnoten] != 0) {
+					if (!(M.contains(nachbarKnoten)) && entfernungen[nachbarKnoten] == Integer.MAX_VALUE) {
+						M.add(nachbarKnoten);
 					}
-					relax(e1, e2);
+					relax(aktuellerKnoten, nachbarKnoten);// relaxiert Kanten
 				}
 
 			}
 		}
-		pred[s] = s;
+		vorgaenger[s] = s;
 
-		printOutput("Dijkstra",distance,pred);
+		printOutput("Dijkstra", entfernungen, vorgaenger);// vererbte Methode
 	}
 
-	public void relax(int e1, int e2) {
-		int temp = distance[e1] + graph[e1][e2];
-		if (temp < distance[e2]) {
-			distance[e2] = temp;
-			pred[e2] = e1;
+	public void relax(int aktuellerKnoten, int nachbarKnoten) {
+		int temp = entfernungen[aktuellerKnoten] + graph[aktuellerKnoten][nachbarKnoten];
+		if (temp < entfernungen[nachbarKnoten]) {
+			entfernungen[nachbarKnoten] = temp;
+			vorgaenger[nachbarKnoten] = aktuellerKnoten;
 		}
 	}
 
 	public int getSmallestEdge(int s) {
 		int index = s;
 		int min = Integer.MAX_VALUE;
-		for (int i = 0; i < distance.length; i++) {
-			if (M.contains(i) && pred[i] != -1) {
-				if (distance[i] < min) {
-					min = distance[i];
+		for (int i = 0; i < knotenAnzahl; i++) {
+			if (M.contains(i) && vorgaenger[i] != -1) {
+				if (entfernungen[i] < min) {
+					min = entfernungen[i];
 					index = i;
 				}
 			}
@@ -61,6 +59,10 @@ public class Dijkstra extends ShortestPath {
 		return index;
 	}
 
-
+	public int[] makePredecessor(int s) {
+		int[] temp = new int[knotenAnzahl];
+		temp[s] = -1;
+		return temp;
+	}
 
 }
