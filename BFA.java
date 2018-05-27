@@ -39,7 +39,7 @@ public class BFA extends ShortestPath {
 			int gewicht = kante.getGewicht();
 
 			if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u] + gewicht < entfernungen[v]) {
-				System.out.println(identifier + "\nNegativer Zyklus");
+				System.out.println(identifier + ":\nNegativer Zyklus");
 				return;
 			}
 		}
