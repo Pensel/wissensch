@@ -14,6 +14,7 @@ public class BFA extends ShortestPath {
 		entfernungen = makeDistanceArray(knotenAnzahl, s); // vererbte Methode
 		kanten = g.getKanten();
 		vorgaenger = new int[knotenAnzahl];
+		vorgaenger[s] =s;
 
 		for (int i = 0; i < knotenAnzahl - 1; i++) // n-1 Durchläufe
 		{
@@ -40,7 +41,7 @@ public class BFA extends ShortestPath {
 
 			if (entfernungen[u] != Integer.MAX_VALUE && entfernungen[u] + gewicht < entfernungen[v]) {
 				System.out.println(identifier + ":\nNegativer Zyklus");
-				return;
+				break;
 			}
 		}
 
