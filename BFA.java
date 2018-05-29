@@ -31,7 +31,7 @@ public class BFA extends ShortestPath {
 				}
 			}
 		}
-
+		printOutput(identifier, entfernungen, vorgaenger);
 		for (Kante kante : kanten) // der N-te Durchlauf. Nach n-1 Durchläufen ist der schnellste Weg gefunden. Der
 									// n-te zeigt ob es negative Zyklen gibt.
 		{
@@ -45,7 +45,7 @@ public class BFA extends ShortestPath {
 			}
 		}
 
-		printOutput(identifier, entfernungen, vorgaenger);
+
 	}
 
 }
