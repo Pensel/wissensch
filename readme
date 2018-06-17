@@ -1,1 +1,3 @@
-function gitauto() { git fetch; git add .; git commit -m "$*"; git push;}
+Der Code aus der wissenschaftlichen Arbeit der Gruppe 62.
+Geschrieben im Sommersemester 2018 im Zuge des Moduls Wissenschaftliches Arbeiten.
+
